@@ -1,0 +1,10 @@
+{
+  "files.exclude": {
+    "public": true,
+    ".vscode": true,
+    ".gitignore": true,
+    "yarn.lock": true,
+    "node_modules": true
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always"
+}
