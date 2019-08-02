@@ -2,12 +2,12 @@ import React from "react";
 import { PageHeader, Icon } from "antd";
 import styled from "styled-components";
 
-export const MigrationSlackAuthHeader = () => (
+export const MigrationO365AuthHeader = () => (
   <StyledPageHeader
-    title="Slack Authentication"
-    subTitle="Let's connect your Slack account!"
+    title="O365 Authentication"
+    subTitle="Let's connect your Microsoft account!"
     onBack={() => null}
-    backIcon={<Icon type="slack" />}
+    backIcon={<Icon type="windows" />}
   />
 );
 

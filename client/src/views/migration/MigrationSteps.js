@@ -1,10 +1,11 @@
 import React from "react";
 import { Steps } from "antd";
+import { useMigrationStep } from "./";
 
 const { Step } = Steps;
 
-export const MigrationSidebar = () => (
-  <Steps direction="vertical" size="small" current={0}>
+export const MigrationSteps = ({ history: { location } }) => (
+  <Steps direction="vertical" size="small" current={useMigrationStep(location)}>
     <Step title="Slack Connection" description="Connect your Slack account." />
     <Step
       title="Microsoft Connection"
