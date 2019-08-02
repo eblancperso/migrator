@@ -1,15 +1,12 @@
 import React from "react";
 import { Row, Col, Steps } from "antd";
 import styled from "styled-components";
-import { Switch, Route, Redirect } from "react-router-dom";
 
 import {
+  MigrationSidebar,
   MigrationSlackAuthHeader,
-  MigrationSlackAuth,
-  MigrationO365Auth
+  MigrationContent
 } from "./";
-
-const { Step } = Steps;
 
 export const Migration = () => (
   <StyledMigration>
@@ -19,40 +16,11 @@ export const Migration = () => (
       <Row>
         <Col span={8}>
           <Steps direction="vertical" size="small" current={0}>
-            <Step
-              title="Slack Connection"
-              description="Connect your Slack account."
-            />
-            <Step
-              title="Microsoft Connection"
-              description="Connect your Microsoft account."
-            />
-            <Step
-              title="Migration Selection"
-              description="Choose what to migrate."
-            />
-            <Step
-              title="Options"
-              description="Select how we should handle data."
-            />
-            <Step
-              title="Confirmation"
-              description="Confirm & migrate your things"
-            />
+            <MigrationSidebar />
           </Steps>
         </Col>
         <Col span={16}>
-          <Switch>
-            <Route
-              path="/migration/slack-authentication"
-              component={MigrationSlackAuth}
-            />
-            <Route
-              path="/migration/o365-authentication"
-              component={MigrationO365Auth}
-            />
-            <Redirect to="/migration/slack-authentication" />
-          </Switch>
+          <MigrationContent />
         </Col>
       </Row>
     </StyledContent>
