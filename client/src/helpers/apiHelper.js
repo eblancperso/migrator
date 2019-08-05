@@ -11,21 +11,19 @@ const config = {
   }
 };
 
-export const post = async (endpoint, body) => {
+export const post = async (endpoint, body, host = baseUrl) => {
   try {
     await addHeaders();
-    return parseResponse(
-      await axios.post(`${baseUrl}${endpoint}`, body, config)
-    );
+    return parseResponse(await axios.post(`${host}${endpoint}`, body));
   } catch (error) {
     return handleError(error);
   }
 };
 
-export const get = async endpoint => {
+export const get = async (endpoint, host = baseUrl) => {
   try {
     await addHeaders();
-    return parseResponse(await axios.get(`${baseUrl}${endpoint}`, config));
+    return parseResponse(await axios.get(`${host}${endpoint}`));
   } catch (error) {
     return handleError(error);
   }
