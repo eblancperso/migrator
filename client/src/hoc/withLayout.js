@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { TopMenu } from "components/top-menu";
+import { TopMenu } from "components";
 
 export const withLayout = WrappedComponent => props => {
   return (

@@ -1,12 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { Transfer } from "antd";
 
 import { get } from "helpers/apiHelper";
+import { TableTransfer } from "components";
 
+const leftTableColumns = [
+  {
+    dataIndex: "name",
+    title: "Name"
+  },
+  {
+    dataIndex: "description",
+    title: "Description"
+  }
+];
+const rightTableColumns = [
+  {
+    dataIndex: "name",
+    title: "Name"
+  }
+];
 export const MigrationSelection = () => {
   const [channels, setChannels] = useState([]);
   const [targetKeys, setTargetKeys] = useState([]);
-  const [selectedKeys, setSelectedKeys] = useState([]);
 
   useEffect(() => {
     const getSlackChannels = async () => {
@@ -18,7 +33,12 @@ export const MigrationSelection = () => {
       );
 
       if (response && response.channels) {
-        setChannels(response.channels);
+        setChannels(
+          response.channels.map(c => ({
+            ...c,
+            description: c.purpose ? c.purpose.value : ""
+          }))
+        );
       }
     };
 
@@ -29,26 +49,16 @@ export const MigrationSelection = () => {
     setTargetKeys(nextTargetKeys);
   };
 
-  const onSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {
-    setSelectedKeys([...sourceSelectedKeys, ...targetSelectedKeys]);
-  };
-
   return (
     <React.Fragment>
-      <Transfer
+      <TableTransfer
         dataSource={channels}
-        titles={["Source", "Target"]}
         targetKeys={targetKeys}
-        selectedKeys={selectedKeys}
         onChange={onChange}
-        onSelectChange={onSelectChange}
-        render={channel => channel.name}
+        leftColumns={leftTableColumns}
+        rightColumns={rightTableColumns}
         rowKey={channel => channel.id}
       />
-
-      {/* {channels.map(channel => (
-        <div key={channel.id}>{channel.name}</div>
-      ))} */}
     </React.Fragment>
   );
 };
