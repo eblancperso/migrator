@@ -20,6 +20,10 @@ export const MigrationSlackAuth = ({ history, location }) => {
         // If we got an access token from Slack, set it in the local storage.
         if (response.access_token) {
           localStorage.setItem("slack_access_token", response.access_token);
+          localStorage.setItem(
+            "slack_bot_access_token",
+            response.bot_access_token
+          );
           history.push("/migration/o365-authentication");
         }
       };
@@ -37,7 +41,7 @@ export const MigrationSlackAuth = ({ history, location }) => {
         subTitle="Sign In to your Slack account to allow channel reading."
         extra={[
           <a
-            href={`https://slack.com/oauth/authorize?scope=channels:read&client_id=${
+            href={`https://slack.com/oauth/authorize?scope=channels:read+groups:read+bot+files:read&client_id=${
               slackConfig.clientId
             }`}
             key={0}

@@ -3,7 +3,6 @@ export * from "./MigrationSteps";
 export * from "./MigrationHeader";
 export * from "./MigrationContent";
 export * from "./MigrationSlackAuth";
-export * from "./MigrationSlackAuthHeader";
 export * from "./MigrationO365Auth";
-export * from "./MigrationO365AuthHeader";
+export * from "./MigrationSelection";
 export * from "./useMigrationStep";

@@ -8,7 +8,7 @@ export const MigrationSteps = ({ history: { location } }) => (
   <Steps direction="vertical" size="small" current={useMigrationStep(location)}>
     <Step title="Slack Connection" description="Connect your Slack account." />
     <Step
-      title="Microsoft Connection"
+      title="O365 Connection"
       description="Connect your Microsoft account."
     />
     <Step title="Migration Selection" description="Choose what to migrate." />

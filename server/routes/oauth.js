@@ -24,11 +24,22 @@ router.get("/slack/token", async (req, res) => {
         .send("Error while getting Slack token.");
     }
 
-    if (!response.data || (response.data && !response.data.access_token)) {
+    if (
+      !response.data ||
+      (response.data && !response.data.access_token) ||
+      (response.data &&
+        !response.data.bot &&
+        !response.data.bot.bot_access_token)
+    ) {
       return res.status(400).send("No access token provided by Slack API.");
     }
 
-    return res.status(200).send({ access_token: response.data.access_token });
+    return res
+      .status(200)
+      .send({
+        access_token: response.data.access_token,
+        bot_access_token: response.data.bot.bot_access_token
+      });
   } catch (error) {
     return res.status(500).send(error);
   }

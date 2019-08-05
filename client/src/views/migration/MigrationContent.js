@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-import { MigrationSlackAuth, MigrationO365Auth } from "./";
+import { MigrationSlackAuth, MigrationO365Auth, MigrationSelection } from "./";
 
 export const MigrationContent = () => (
   <Switch>
@@ -13,6 +13,7 @@ export const MigrationContent = () => (
       path="/migration/o365-authentication"
       component={MigrationO365Auth}
     />
+    <Route path="/migration/selection" component={MigrationSelection} />
     <Redirect to="/migration/slack-authentication" />
   </Switch>
 );

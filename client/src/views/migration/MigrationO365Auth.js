@@ -20,7 +20,7 @@ export const MigrationO365Auth = ({ history, location }) => {
         // If we got an access token from Slack, set it in the local storage.
         if (response.access_token) {
           localStorage.setItem("o365_access_token", response.access_token);
-          history.push("/authentication/o365-login");
+          history.push("/migration/selection");
         }
       };
 
