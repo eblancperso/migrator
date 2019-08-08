@@ -5,4 +5,5 @@ export * from "./MigrationContent";
 export * from "./MigrationSlackAuth";
 export * from "./MigrationO365Auth";
 export * from "./MigrationSelection";
+export * from "./MigrationSelectionColumns";
 export * from "./useMigrationStep";

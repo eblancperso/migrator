@@ -38,5 +38,5 @@ export const MigrationHeader = ({ history }) => {
 
 const StyledPageHeader = styled(PageHeader)`
   padding-left: 0;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
 `;

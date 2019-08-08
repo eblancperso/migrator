@@ -1,24 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { PageHeader } from "antd";
 
 import { get } from "helpers/apiHelper";
 import { TableTransfer } from "components";
+import { nameColumn, descriptionColumn } from "./";
 
-const leftTableColumns = [
-  {
-    dataIndex: "name",
-    title: "Name"
-  },
-  {
-    dataIndex: "description",
-    title: "Description"
-  }
-];
-const rightTableColumns = [
-  {
-    dataIndex: "name",
-    title: "Name"
-  }
-];
 export const MigrationSelection = () => {
   const [channels, setChannels] = useState([]);
   const [targetKeys, setTargetKeys] = useState([]);
@@ -51,12 +37,13 @@ export const MigrationSelection = () => {
 
   return (
     <React.Fragment>
+      <PageHeader title="Hey" />
       <TableTransfer
         dataSource={channels}
         targetKeys={targetKeys}
         onChange={onChange}
-        leftColumns={leftTableColumns}
-        rightColumns={rightTableColumns}
+        leftColumns={[nameColumn, descriptionColumn]}
+        rightColumns={[nameColumn]}
         rowKey={channel => channel.id}
       />
     </React.Fragment>
